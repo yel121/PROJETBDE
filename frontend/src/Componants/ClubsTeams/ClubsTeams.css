@@ -1,0 +1,112 @@
+/* Clubs & Teams Section Title */
+.clubs-teams-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 50px;
+    position: relative;
+    padding: 10px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #fbbc04, #ff6f61); /* Gradient background */
+    color: white;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .clubs-teams-title:hover {
+    background: linear-gradient(45deg, #ff6f61, #fbbc04); /* Reverse gradient on hover */
+  }
+  
+  /* Wrapper for the Cards */
+  .clubs-teams-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+  }
+  
+  /* Card Container for 3D Flip Effect */
+  .flip-card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Each Card */
+  .flip-card {
+    background-color: transparent;
+    width: 30%;
+    height: 300px;
+    perspective: 1000px; /* Adds 3D perspective */
+  }
+  
+  /* The actual flip card that will be animated */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d; /* Necessary for the flip effect */
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg); /* Rotate the card on hover */
+  }
+  
+  /* Front of the card */
+  .flip-card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back when flipped */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .flip-card-front img {
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Back of the card */
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: #fff;
+    padding: 20px;
+    color: #333;
+    transform: rotateY(180deg); /* Make the back of the card visible on flip */
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.6s ease;
+  }
+  
+  .flip-card:hover .flip-card-back {
+    opacity: 1; /* Make the back content visible when hovered */
+  }
+  
+  /* Title in the Back */
+  .flip-card-back h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Description Text */
+  .flip-card-back p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    height: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  

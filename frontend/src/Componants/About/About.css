@@ -1,0 +1,116 @@
+/* Common Styling for Sections */
+.about-first, .about-second, .about-third {
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+/* First Section: Image Right, Text Left */
+.about-left-first {
+    flex-basis: 40%;
+    position: relative;
+}
+.about-right-first {
+    flex-basis: 56%;
+}
+
+/* Second Section: Image Left, Text Right */
+.about-second {
+    flex-direction: row-reverse;
+}
+.about-left-second {
+    flex-basis: 40%;
+    position: relative;
+}
+.about-right-second {
+    flex-basis: 56%;
+}
+
+/* Third Section: Image Right, Text Left */
+.about-left-third {
+    flex-basis: 40%;
+    position: relative;
+}
+.about-right-third {
+    flex-basis: 56%;
+}
+
+/* Image Styles */
+.about-img, .about-img-second, .about-img-third {
+    width: 60%;
+    border-radius: 10px;
+    margin-left: 100px;
+}
+
+/* Play Icon Styles */
+.play-icon, .play-icon-second, .play-icon-third {
+    width: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Text Styling */
+.about-right-first h1, .about-right-second h1, .about-right-third h1 {
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    font-weight: 450;
+}
+
+.about-right-first p, .about-right-second p, .about-right-third p {
+    font-size: 14px;
+    font-weight: 100px;
+    color: black;
+}
+
+.about-right-first ul, .about-right-second ul, .about-right-third ul {
+    font-size: 12px;
+    font-weight: 50px;
+    max-width: 550px;
+    margin: 10px auto 20px;
+    line-height: 1.4;
+    color: black;
+}
+
+/* Decoration Lines for Headings */
+.About-text-decoration-lines {
+    position: relative;
+    display: inline-block;
+}
+
+.About-text-decoration-lines::before,
+.About-text-decoration-lines::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 3px;
+    background-color: #fbbc04;
+    z-index: -10;
+    transform: skewY(-1deg);
+}
+
+.About-text-decoration-lines::before {
+    bottom: 10px;
+    width: 100%;
+}
+
+.About-text-decoration-lines::after {
+    bottom: 6px;
+    width: 90%;
+    transform: skewY(1deg);
+}
+
+/* Highlight Backgrounds */
+.highlight {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.About-highlight-blue {
+    background-color: #2596be;
+}
