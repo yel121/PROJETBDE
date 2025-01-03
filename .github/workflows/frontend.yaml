@@ -49,4 +49,4 @@ jobs:
 
       # Vérifier que l'application démarre correctement dans un environnement Docker
       - name: Test Docker image
-        run: docker run -p 80:80 bde-frontend npm run
+        run: docker run -p 8000:8000 bde-frontend npm run
