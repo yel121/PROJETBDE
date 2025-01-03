@@ -6,12 +6,9 @@ import react from '@vitejs/plugin-react'
   //plugins: [react()],
 //})
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react-swc'; // Gardez uniquement cette ligne
 
+// Configuration de Vite
 export default defineConfig({
   plugins: [react()],
-  base: '/', 
-  build: {
-    outDir: 'dist',
-  },
 });
