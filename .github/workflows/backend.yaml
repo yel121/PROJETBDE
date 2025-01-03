@@ -44,8 +44,8 @@ jobs:
 
       # Construit une image Docker pour le backend
       - name: Build Docker image
-        run: docker build -t BDE-backend ./backend
+        run: docker build -t bde-backend ./backend
 
       # Lance un conteneur Docker pour tester l'image
       - name: Test Docker image
-        run: docker run -p 3000:3000 BDE-backend npm test
+        run: docker run -p 3000:3000 bde-backend npm test

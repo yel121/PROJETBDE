@@ -45,8 +45,8 @@ jobs:
       # Construire une image Docker pour le frontend
       - name: Build Docker image
         working-directory: ./frontend
-        run: docker build -t BDE-frontend .
+        run: docker build -t bde-frontend .
 
       # Vérifier que l'application démarre correctement dans un environnement Docker
       - name: Test Docker image
-        run: docker run -p 80:80 BDE-frontend npm run
+        run: docker run -p 80:80 bde-frontend npm run
