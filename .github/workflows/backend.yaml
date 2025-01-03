@@ -1,0 +1,51 @@
+name: Backend CI
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+  pull_request:
+    paths:
+      - 'backend/**'
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Télécharge/clone le code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Configure Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Installe les dépendances
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm install
+
+      # Exécute les tests unitaires
+        #  - name: Run tests
+       # working-directory: ./backend
+      #  run: npm test
+
+  build-docker:
+    runs-on: ubuntu-latest
+    needs: backend-tests  # Attends que backend-tests réussisse
+
+    steps:
+      # Télécharge/clone le code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Construit une image Docker pour le backend
+      - name: Build Docker image
+        run: docker build -t BDE-backend ./backend
+
+      # Lance un conteneur Docker pour tester l'image
+      - name: Test Docker image
+        run: docker run -p 3000:3000 BDE-backend npm test

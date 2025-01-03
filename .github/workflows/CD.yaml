@@ -1,0 +1,47 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Login to Docker Hub
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      # Build and Push Frontend Image
+      - name: Build and Push Frontend Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/bdefrontend:latest frontend
+          docker push ${{ secrets.DOCKER_USERNAME }}/bdefrontend:latest
+
+      # Add SSH Key for AWS
+      - name: Add SSH Key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Test SSH Connection
+      - name: Test SSH Connection
+        run: ssh -o StrictHostKeyChecking=no ubuntu@13.38.240.217 "echo 'Connection Successful'"
+
+      # Deploy on VPS
+      - name: Deploy on VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@13.38.240.217 << 'EOF'
+            docker pull ${{ secrets.DOCKER_USERNAME }}/bdefrontend:latest
+
+            docker stop frontendDeploy || true
+    
+
+            docker run -d --rm --name frontendDeploy -p 80:80 ${{ secrets.DOCKER_USERNAME }}/bdefrontend:latest
+          EOF
